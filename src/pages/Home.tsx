@@ -1,10 +1,10 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Dispatch } from 'redux'
-import { History } from 'history'
-import moment from 'moment'
-import { Select, message } from 'antd'
-import _ from 'lodash'
+import React from "react";
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import { History } from "history";
+import moment from "moment";
+import { Select, message } from "antd";
+import _ from "lodash";
 import {
   Header,
   Upload,
@@ -14,120 +14,129 @@ import {
   IconEnum,
   SvgIcon,
   ModelDel
-} from '../components'
+} from "../components";
 import {
   uploadFileProgress,
   uploadFileProgressResult,
   getModelList,
   delModel,
   moveAndCopeModel
-} from '../store/home/action'
-import { ApplicationState } from '../store/rootReducer'
-import { HomeState, HomeAction } from '../store/home/types'
-import { node } from 'prop-types'
+} from "../store/home/action";
+import { ApplicationState } from "../store/rootReducer";
+import { HomeState, HomeAction } from "../store/home/types";
+const bg = require("../assets/bg.jfif");
 
 interface HomeWindowProps {
-  dispatch: Dispatch<HomeAction>
-  history: History
+  dispatch: Dispatch<HomeAction>;
+  history: History;
 }
 
-type Props = HomeWindowProps & HomeState
+type Props = HomeWindowProps & HomeState;
 
 interface State {
-  visible: boolean
-  visibleStr: boolean
-  visibleDel: boolean
-  progressVis: string
-  delTitle: string
-  selectModelId: string
-  operTitle: string
-  selectGroupId: string
+  visible: boolean;
+  visibleStr: boolean;
+  visibleDel: boolean;
+  progressVis: string;
+  delTitle: string;
+  selectModelId: string;
+  operTitle: string;
+  selectGroupId: string;
 }
 
 class Home extends React.Component<Props, State> {
   constructor(props: Props) {
-    super(props)
+    super(props);
     this.state = {
       visible: false,
       visibleStr: false,
       visibleDel: false,
-      progressVis: 'none',
-      delTitle: '',
-      selectModelId: '',
-      operTitle: '',
-      selectGroupId: ''
-    }
+      progressVis: "none",
+      delTitle: "",
+      selectModelId: "",
+      operTitle: "",
+      selectGroupId: ""
+    };
   }
 
   componentWillMount() {
-    const { dispatch } = this.props
-    dispatch(getModelList())
+    const { dispatch } = this.props;
+    dispatch(getModelList());
   }
 
   getBar = () => {
-    const { modeList, modelGroupList, history, dispatch } = this.props
-    let html: JSX.Element[] = []
+    const { history } = this.props;
+    const modeList = [
+      {
+        id: "1",
+        updated_at: "2019-10-11 15:12:01",
+        type: 0,
+        name: "测试模型.bin",
+        imgUrl: bg
+      }
+    ];
+    let html: JSX.Element[] = [];
     modeList.map(m => {
       html.push(
         <li key={m.id} className="l-float__item">
           <Card
             hover
             title={m.name}
-            tip={moment(m.updated_at).format('YYYY-MM-DD')}
-            img="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551512285167&di=2bc62c8d6cd3fc31fff04de3ea27db55&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F12%2F10%2F38%2F09858PICzi5.jpg"
+            tip={moment(m.updated_at).format("YYYY-MM-DD")}
+            img={m.imgUrl}
             onDel={() => {
               this.setState({
                 visibleDel: true,
                 delTitle: m.name,
                 selectModelId: m.id
-              })
+              });
             }}
             modelClick={() => {
-              history.push('modelview/' + m.id)
+              history.push("modelview/" + m.id);
             }}
             rightRender={() => (
               <div>
                 <SvgIcon
                   title="移动"
                   name={IconEnum.remove}
-                  style={{ marginRight: '5px' }}
+                  style={{ marginRight: "5px" }}
                   onClick={() => {
                     this.setState({
                       visibleStr: true,
-                      operTitle: '移动',
+                      operTitle: "移动",
                       selectModelId: m.id
-                    })
+                    });
                   }}
                 />
                 <SvgIcon
                   title="复制"
                   name={IconEnum.cope}
-                  style={{ marginRight: '5px' }}
+                  style={{ marginRight: "5px" }}
                   onClick={() => {
                     this.setState({
                       visibleStr: true,
-                      operTitle: '复制',
+                      operTitle: "复制",
                       selectModelId: m.id
-                    })
+                    });
                   }}
                 />
                 <SvgIcon
                   title="子模型"
                   name={IconEnum.childModel}
                   onClick={() => {
-                    history.push('homeChild/' + m.id)
+                    // history.push("homeChild/" + m.id);
                   }}
                 />
               </div>
             )}
           />
         </li>
-      )
-    })
-    return <div>{html}</div>
-  }
+      );
+    });
+    return <div>{html}</div>;
+  };
   render() {
-    const { fileProgress, uploadResult, dispatch, modelGroupList } = this.props
+    const { fileProgress, uploadResult, dispatch, modelGroupList } = this.props;
     const {
       visible,
       progressVis,
@@ -137,7 +146,7 @@ class Home extends React.Component<Props, State> {
       delTitle,
       selectModelId,
       operTitle
-    } = this.state
+    } = this.state;
     return (
       <div className="main">
         <div className="l-flex l-flex--col">
@@ -150,17 +159,17 @@ class Home extends React.Component<Props, State> {
                 <li className="l-float__item">
                   <Upload
                     onChange={a => {
-                      dispatch(uploadFileProgress(a))
+                      dispatch(uploadFileProgress(a));
                     }}
                     onComple={b => {
                       //1.上传完成后提示上传结果
                       //2.更新reducer 中上传结果状态
                       //3.从新获取模型列表数据
-                      dispatch(uploadFileProgressResult(b))
-                      dispatch(getModelList())
+                      dispatch(uploadFileProgressResult(b));
+                      dispatch(getModelList());
                     }}
                     onSetState={val => {
-                      this.setState({ progressVis: val })
+                      this.setState({ progressVis: val });
                     }}
                     maxSiz={200000000}
                     title="添加模型"
@@ -182,7 +191,7 @@ class Home extends React.Component<Props, State> {
                             />
                           }
                         </div>
-                      )
+                      );
                     }}
                   />
                 </li>
@@ -195,20 +204,20 @@ class Home extends React.Component<Props, State> {
           visible={visibleStr}
           title={`${operTitle}模型组`}
           onClose={() =>
-            this.setState({ visibleStr: false, selectGroupId: '' })
+            this.setState({ visibleStr: false, selectGroupId: "" })
           }
           onOk={() => {
-            if (this.state.selectGroupId != '') {
+            if (this.state.selectGroupId != "") {
               dispatch(
                 moveAndCopeModel(
                   this.state.selectGroupId,
                   this.state.selectModelId,
-                  operTitle == '移动' ? false : true
+                  operTitle == "移动" ? false : true
                 )
-              )
-              this.setState({ visibleStr: false })
+              );
+              this.setState({ visibleStr: false });
             } else {
-              message.error('请选择模型组！')
+              message.error("请选择模型组！");
             }
           }}
         >
@@ -216,9 +225,9 @@ class Home extends React.Component<Props, State> {
             <div className="l-flex">
               <label className="p-modalBody__label">名称</label>
               <Select
-                style={{ width: '100% ' }}
+                style={{ width: "100% " }}
                 onChange={value => {
-                  this.setState({ selectGroupId: value.toString() })
+                  this.setState({ selectGroupId: value.toString() });
                 }}
                 value={selectGroupId}
               >
@@ -226,12 +235,12 @@ class Home extends React.Component<Props, State> {
                   modelGroupList,
                   node => node.id !== this.state.selectModelId
                 ).map((opt, index) => {
-                  let { id, name } = opt
+                  let { id, name } = opt;
                   return (
                     <Select.Option key={index} value={id}>
                       {name}
                     </Select.Option>
-                  )
+                  );
                 })}
               </Select>
             </div>
@@ -242,16 +251,16 @@ class Home extends React.Component<Props, State> {
           content={`是否删除'${delTitle}'及其子模型？`}
           visible={visibleDel}
           onClose={() => {
-            this.setState({ visibleDel: false })
+            this.setState({ visibleDel: false });
           }}
           onOk={() => {
-            dispatch(delModel(selectModelId))
-            this.setState({ visibleDel: false })
+            dispatch(delModel(selectModelId));
+            this.setState({ visibleDel: false });
           }}
         />
       </div>
-    )
+    );
   }
 }
 
-export default connect((state: ApplicationState) => state.home)(Home)
+export default connect((state: ApplicationState) => state.home)(Home);
