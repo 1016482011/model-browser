@@ -1,0 +1,46 @@
+/* flex布局
+---------------------------------------------------------------- */
+.l-flex {
+    .mix-box-size;
+    display: flex;
+
+    .l-flex__item--full {
+        position: relative;
+        flex: 1;
+    }
+}
+
+.l-flex--col {
+    flex-direction: column;
+}
+
+/* float布局
+---------------------------------------------------------------- */
+.l-float {
+    width: 100%;
+
+    &::after {
+        .mix-clear-float;
+    }
+}
+
+.l-float__item {
+    float: left;
+    margin: 0 30px 30px 0;
+}
+
+.l-ta__right {
+    text-align: right;
+}
+
+.l-ta__center {
+    text-align: center;
+}
+
+.l-pd__v {
+    padding: 10px 0;
+}
+
+.l-pd__v--sm {
+    padding: 5px 0;
+}

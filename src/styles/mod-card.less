@@ -1,0 +1,169 @@
+/* 默认卡片
+---------------------------------------------------------------- */
+.m-card {
+  .mix-box-card;
+  position: relative;
+
+  &:hover {
+    border: 1px solid @colorBlue;
+  }
+
+
+  .m-card__imgBox {
+    position: relative;
+    height: 173px;
+    background-color: @colorWhite;
+    overflow: hidden;
+  }
+
+  .m-card__img {
+    .mix-box-size(100%, auto);
+    border-radius: 2px 2px 0 0;
+  }
+
+  .m-card__empty {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -24px auto auto -99px;
+  }
+
+  .m-card__content {
+    padding: 10px 15px 5px 15px;
+
+    .m-card__body {
+      height: 20px;
+    }
+  }
+
+  .m-card__content--bg {
+    background: url(../assets/img/group.png) no-repeat right bottom;
+  }
+
+  .m-card__title {
+    color: @colorDarkGray;
+  }
+
+  .m-card__tool {
+    float: right;
+  }
+
+  .m-card__tip {
+    color: @colorGray;
+    line-height: 2;
+  }
+
+}
+
+.m-card__delBox {
+  .mix-box-size(88px, 88px);
+  position: absolute;
+  right: 0;
+  padding: 12px;
+  background: url(../assets/img/hover.png) no-repeat 3px 0;
+  z-index: 1;
+
+}
+
+.m-card__icon {
+  float: right;
+}
+
+/* 布局用卡片
+---------------------------------------------------------------- */
+.m-cardLay {
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 0px 6px 18px 0px fade(@colorDarkBlue, 20%);
+
+  .m-cardLay__header {
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    color: @colorWhite;
+    background: url('../assets/img/bg.png')
+  }
+
+  .m-cardLay__footer {
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+  }
+}
+
+/* 带图片卡片
+---------------------------------------------------------------- */
+.m-cardImg {
+  position: relative;
+  border: 1px solid @colorLightGray;
+  border-radius: 2px;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    border-color: @colorBlue;
+    box-shadow: 0px 1px 16px 0px fade(@colorDarkBlue, 15%);
+  }
+}
+
+.m-cardImg__img {
+  height: 120px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    border-radius: 2px;
+  }
+}
+
+.m-cardImg__body {
+  line-height: 40px;
+  padding: 0 10px;
+  color: @colorDarkGray;
+
+  .m-cardImg__time {
+    color: @colorGray;
+  }
+}
+
+.m-cardImg__delBox {
+  .m-card__delBox;
+  padding: 4px;
+
+  .m-cardImg__icon {
+    .m-card__icon;
+    margin-left: 5px;
+  }
+
+}
+
+/* 标签卡片
+---------------------------------------------------------------- */
+.m-cardTag {
+  .m-cardImg;
+
+  .m-cardTag__body {
+    height: 90px;
+    padding: 10px 25px 10px 50px;
+
+    .m-cardTag__text {
+      margin: 5px 0;
+      color: @colorDarkGray;
+    }
+  }
+
+  .m-cardTag__mark {
+    position: absolute;
+    left: -6px;
+    top: -6px;
+  }
+}
+
+.m-cardTag__delBox {
+  .m-card__delBox;
+  padding: 4px;
+
+  .m-cardTag__icon {
+    .m-card__icon;
+    margin-left: 5px;
+  }
+}

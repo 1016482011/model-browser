@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    .mix-box-size;
+    font-size: @fontSizePrimary;
+}
+
+/* 样式重置
+---------------------------------------------------------------- */
+button {
+    align-items: flex-start;
+    text-align: center;
+    cursor: default;
+    padding: 2px 6px 3px;
+    border-width: 2px;
+    border-style: outset;
+    border-image: initial;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+ul {
+    margin-top: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    user-select: none;
+}
+
+/* 背景色
+---------------------------------------------------------------- */
+.bg-lightBlue {
+    background-color: @colorLightBlue;
+}
+
+/* 头部
+---------------------------------------------------------------- */
+.header {
+    height: 90px;
+    padding: 25px 60px;
+}
+
+/* home页面
+---------------------------------------------------------------- */
+.main {
+    .mix-box-size
+}
+
+
+/* hr
+---------------------------------------------------------------- */
+.hr {
+    height: 1px;
+    margin: 0;
+    border: none;
+    border-top: 1px solid @colorLightGray;
+}
+
+.hr--dark {
+    border-top-color: @colorHrDark;
+}
+
+/* mock
+---------------------------------------------------------------- */
+.mock {
+    .mix-box-size;
+    position: absolute;
+    top: 0;
+    background-color: @colorBlack;
+    opacity: 0.4;
+    z-index: 99;
+}

@@ -1,0 +1,54 @@
+/* 模态框
+---------------------------------------------------------------- */
+.m-modal {
+  .mix-box-size(100%, 560px);
+  position: absolute;
+  top: 50%;
+  margin-top: -273px;
+  z-index: 999;
+}
+
+.m-modal__container {
+  .mix-box-size(620px, 560px);
+  margin: 0 auto;
+  padding: 10px 0;
+  background: url('../assets/img/FBg.png') -19px 0px;
+}
+
+.m-modal__close {
+  text-align: right;
+}
+
+.m-modal__circlebg {
+  .mix-box-size(42px, 42px);
+  display: inline-block;
+  line-height: 42px;
+  border-radius: 21px;
+  background-color: @colorWhite;
+  text-align: center;
+  cursor: pointer;
+}
+
+.m-modal__title {
+  color: @colorWhite;
+  font-size: @fontSizeXLarge;
+  line-height: 3;
+  text-align: center;
+}
+
+.m-modal__body {
+  height: 310px;
+  margin-top: 26px;
+}
+
+.m-modal__body--nofooter {
+  height: 390px;
+}
+
+.m-model-footer {
+  text-align: center;
+
+  button {
+    margin: 0 10px;
+  }
+}

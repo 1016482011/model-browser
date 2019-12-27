@@ -1,0 +1,84 @@
+/* 按钮
+---------------------------------------------------------------- */
+
+.m-button {
+  position: relative;
+  display: inline-block;
+  height: 32px;
+  padding: 1PX 33px;
+  font-weight: 400;
+  color: @colorGray;
+  white-space: nowrap;
+  text-align: center;
+  background-image: none;
+  border: 1px solid @colorLightGray;
+  cursor: pointer;
+  transition: all .3s cubic-bezier(.645, .045, .355, 1);
+  user-select: none;
+  border-radius: 4px;
+  background-color: @colorWhite;
+
+  &::selection {
+    outline: none;
+  }
+
+  &:active {
+    outline: none;
+  }
+}
+
+.m-button--defalut {
+  box-shadow: 0 0 10px 0 fade(@colorLightGray, 68%);
+
+  &:hover {
+    background-color: @colorLightGray;
+    color: @colorBlack;
+  }
+}
+
+.m-button--primary.m-button--defalut {
+  color: @colorWhite;
+  background-color: @colorBlue;
+  border-color: transparent;
+  box-shadow: 0 0 10px 0 fade(@colorBlue, 68%);
+
+  &:hover {
+    background-color: lighten(@colorBlue, 10%)
+  }
+}
+
+.m-button--plain {
+  height: 14px;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.m-button--primary.m-button--plain {
+  color: @colorBlue;
+}
+
+/* svg定制按钮
+---------------------------------------------------------------- */
+.m-buttonIcon {
+  .mix-box-size(44px, 40px);
+  position: relative;
+  display: inline-block;
+  padding: 6px 0;
+  text-align: center;
+  background: fade(@colorIconButton, 75%);
+
+  &:hover {
+    background: fade(@colorIconButtonHover, 75%);
+    transition: all ease-in 0.2s;
+  }
+}
+
+.m-buttonIcon--active {
+  background: fade(@colorIconButtonHover, 75%);
+}
+
+.m-buttonIcon--radius {
+  border-radius: 4px;
+}

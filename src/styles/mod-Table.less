@@ -1,0 +1,43 @@
+.m-table {
+  position: relative;
+  width: 100%;
+  word-wrap: break-word;
+  word-break: break-all;
+  border: 1px solid @colorLightGray;
+
+  .m-table__title {
+    line-height: 50px;
+    padding: 0 15px;
+    font-size: 14px;
+    color: @colorDarkGray;
+    background: @colorLightGray;
+  }
+
+  .m-table__item {
+    line-height: 1.2em;
+    color: @colorDarkGray;
+    cursor: pointer;
+
+    &:hover {
+      background: #effafe;
+      transition: all ease-in 0.2s;
+    }
+
+    div {
+      padding: 0 10px;
+      line-height: 50px;
+      height: 50px;
+      overflow: hidden;
+
+      &:first-child {
+        border-right: 1px solid @colorLightGray;
+      }
+    }
+
+    .m-table__hover {
+      position: absolute;
+      right: 0;
+      padding: 7px 10px;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "/build",
+  "proxy": "http://111.231.56.231:4000/api/v1",
+  "dependencies": {
+    "@types/classnames": "^2.2.7",
+    "@types/history": "^4.7.2",
+    "@types/jest": "24.0.9",
+    "@types/lodash": "^4.14.121",
+    "@types/node": "11.9.5",
+    "@types/qrcode": "^1.3.1",
+    "@types/react": "16.8.5",
+    "@types/react-dom": "16.8.2",
+    "@types/react-redux": "^7.0.1",
+    "@types/react-router-dom": "^4.3.1",
+    "antd": "^3.14.0",
+    "bustard": "^0.0.6",
+    "classnames": "^2.2.6",
+    "customize-cra": "^0.2.11",
+    "less": "^3.9.0",
+    "lodash": "^4.17.11",
+    "normalize.css": "^8.0.1",
+    "qrcode": "^1.3.3",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.5",
+    "redux": "^4.0.1",
+    "redux-saga": "^1.0.2",
+    "typescript": "3.3.3333"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "babel-plugin-import": "^1.11.0",
+    "body-parser": "^1.18.3",
+    "less-loader": "^4.1.0",
+    "multer": "^1.4.1",
+    "react-app-rewired": "^2.1.0"
+  }
+}
